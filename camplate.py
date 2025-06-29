@@ -26,8 +26,34 @@ data = [] #db에 넣기전 리스트 선언
 url = "https://www.inha.ac.kr/kr/1072/subview.do?&enc=" + encoded_data #최종 주소 결합
 """
 
+
 user_agent = UserAgent()
-headers = {'User-Agent': user_agent.random} #user agent 설정
+headers = {
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+    'Cache-Control': 'max-age=0',
+    'Connection': 'keep-alive',
+    'Referer': 'https://www.google.com/', # Referer 헤더는 때로 중요하게 작용합니다.
+    'Sec-Fetch-Dest': 'document',
+    'Sec-Fetch-Mode': 'navigate',
+    'Sec-Fetch-Site': 'cross-site',
+    'Sec-Fetch-User': '?1',
+    'Upgrade-Insecure-Requests': '1',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"macOS"',
+}
+
+cookies = {
+    '_ga_EMBK5DZ5XK': 'GS1.1.1744729103.4.0.1744729103.0.0.0',
+    '_ga_E323M45YWM': 'GS2.1.s1750660760$o54$g1$t1750660760$j60$l0$h0',
+    'JSESSIONID': '9CBDAA2A5AD43F2794E9C749E3123E60', # 세션 유지를 위한 중요한 쿠키일 수 있습니다.
+    '_gid': 'GA1.3.807129918.1751207425',
+    '_gat_gtag_UA_78301200_19': '1',
+    '_ga_VZWY81VB3W': 'GS2.1.s1751207424$o1$g0$t1751207424$j60$l0$h0',
+    '_ga': 'GA1.1.2113335301.1744544466',
+}
 
 
 response = requests.get("https://www.inha.ac.kr/kr/1072/subview.do?&enc=Zm5jdDF8QEB8JTJGZGlldCUyRmtyJTJGMiUyRnZpZXcuZG8lM0Ztb25kYXklM0QyMDI1LjA2LjIzJTI2d2VlayUzRHByZSUyNg==", headers=headers) 
@@ -36,7 +62,12 @@ html = response.text
 
 soup = BeautifulSoup(html, 'html.parser')
 
-# 1. 모든 요일 제목(h2)을 찾는다.
-day_headings = soup.select('#viewForm > div:nth-child(5) > div > div > table > tbody > tr:nth-child(1) > td.left')
+items = soup.select('.table_1.no_mTable')
+for item in items:
+    restarant = item.select_one("#viewForm > div:nth-child(5) > div > div > table > tbody > tr:nth-child(1) > th").text
+    food = item.select_one(".table_1.no_mTable,left").text
+    price = item.select_one("#viewForm > div:nth-child(5) > div > div > table > tbody > tr:nth-child(1) > td:nth-child(3)").text
+
+print(restarant, food, price)
 
 
