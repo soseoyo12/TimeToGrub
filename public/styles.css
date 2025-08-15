@@ -1,0 +1,346 @@
+/* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #007bff;
+}
+
+/* 메인 컨텐츠 */
+main {
+    padding: 2rem 0;
+}
+
+.meal-info {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.meal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.meal-table th,
+.meal-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.meal-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* 버튼 스타일 */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* 태블릿 스타일 (768px 이하) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    main {
+        padding: 1rem 0;
+    }
+    
+    .meal-info {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .meal-table {
+        font-size: 0.9rem;
+    }
+    
+    .meal-table th,
+    .meal-table td {
+        padding: 8px;
+    }
+    
+    /* 테이블을 스크롤 가능하게 만들기 */
+    .table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* 모바일 스타일 (480px 이하) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .header-content {
+        padding: 0.5rem 0;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    nav ul {
+        gap: 0.5rem;
+    }
+    
+    nav a {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    
+    main {
+        padding: 0.5rem 0;
+    }
+    
+    .meal-info {
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 6px;
+    }
+    
+    .meal-info h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .meal-table {
+        font-size: 0.8rem;
+    }
+    
+    .meal-table th,
+    .meal-table td {
+        padding: 6px;
+        font-size: 0.8rem;
+    }
+    
+    /* 모바일에서 테이블 카드 형태로 변경 */
+    .meal-table-mobile {
+        display: block;
+    }
+    
+    .meal-table-mobile thead {
+        display: none;
+    }
+    
+    .meal-table-mobile tbody {
+        display: block;
+    }
+    
+    .meal-table-mobile tr {
+        display: block;
+        margin-bottom: 1rem;
+        background: #f8f9fa;
+        border-radius: 6px;
+        padding: 1rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .meal-table-mobile td {
+        display: block;
+        text-align: left;
+        border: none;
+        padding: 0.3rem 0;
+    }
+    
+    .meal-table-mobile td:before {
+        content: attr(data-label) ": ";
+        font-weight: bold;
+        color: #007bff;
+    }
+    
+    .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 매우 작은 화면 (360px 이하) */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 8px;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .meal-info {
+        padding: 0.8rem;
+    }
+    
+    .meal-info h2 {
+        font-size: 1.2rem;
+    }
+    
+    .meal-table th,
+    .meal-table td {
+        padding: 4px;
+        font-size: 0.75rem;
+    }
+    
+    .meal-table-mobile tr {
+        padding: 0.8rem;
+    }
+    
+    .meal-table-mobile td {
+        padding: 0.2rem 0;
+        font-size: 0.75rem;
+    }
+}
+
+/* 로딩 스피너 (모바일에서 유용) */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 터치 친화적 스타일 */
+@media (hover: none) and (pointer: coarse) {
+    .btn {
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+    
+    nav a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .meal-table-mobile tr {
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+    
+    .meal-table-mobile tr:active {
+        background-color: #e9ecef;
+    }
+}
+
+/* 다크 모드 지원 */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+    }
+    
+    .meal-info {
+        background-color: #2d2d2d;
+        color: #f0f0f0;
+    }
+    
+    .meal-table th {
+        background-color: #3d3d3d;
+        color: #f0f0f0;
+    }
+    
+    .meal-table td {
+        border-bottom-color: #444;
+    }
+    
+    header {
+        background-color: #2d2d2d;
+    }
+    
+    .meal-table-mobile tr {
+        background-color: #3d3d3d;
+    }
+}
